@@ -1,0 +1,23 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: pedido_compras_development
+  pool: 5
+  username: marcos
+  password: 
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: pedido_compras_test
+  pool: 5
+  username: marcos
+  password:
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: pedido_compras_production
+  pool: 5
+  username: marcos
+  password:

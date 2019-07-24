@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Produto Pedidos</h1>
+
+<div class="table-responsive">
+<table class="table table-striped table-bordered">
+  <thead class="thead-dark">
+    <tr>
+      <th>Nome</th>
+      <th>Valor unitario</th>
+      <th>Quantidade</th>
+      <th>Valor total</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  
+
+  <tbody>
+    <% @produto_pedidos.each do |produto_pedido| %>
+      <tr>
+        <td><%= produto_pedido.nome %></td>
+        <td><%= produto_pedido.valor_unitario %></td>
+        <td><%= produto_pedido.quantidade %></td>
+        <td><%= produto_pedido.valor_total %></td>
+        <td><%= link_to 'Mostrar', produto_pedido %></td>
+        <td><%= link_to 'Alterar', edit_pedido_produto_pedido_path(produto_pedido) %></td>
+        <td><%= link_to 'Excluir', pedido_produto_pedido, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Produto pedido', new_pedido_produto_pedido_path(params[:pedido_id]) %>

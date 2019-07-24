@@ -1,0 +1,33 @@
+<%= form_for [@pedido, @produto_pedido] do |f| %>
+  <% if @produto_pedido.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@produto_pedido.errors.count, "error") %> prohibited this produto_pedido from being saved:</h2>
+
+      <ul>
+      <% @produto_pedido.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= f.hidden_field :pedido_id, value: @pedido.id %>
+  <div class="field">
+    <%= f.label :nome %><br>
+    <%= f.select :nome, options_from_collection_for_select(Produto.all, 'nome', 'nome') %>
+  </div>
+  <!-- <div class="field">
+    <%= f.label :valor_unitario %><br>
+    <%= f.text_field :valor_unitario %>
+  </div> -->
+  <div class="field">
+    <%= f.label :quantidade %><br>
+    <%= f.number_field :quantidade %>
+  </div>
+  <!-- <div class="field">
+    <%= f.label :valor_total %><br>
+    <%= f.text_field :valor_total %>
+  </div> -->
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

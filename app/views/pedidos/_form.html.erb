@@ -1,0 +1,46 @@
+<%= form_for(@pedido) do |f| %>
+  <% if @pedido.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@pedido.errors.count, "error") %> prohibited this pedido from being saved:</h2>
+
+      <ul>
+      <% @pedido.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :data_pedido %><br>
+    <%= f.date_select :data_pedido %>
+  </div>
+  <div class="field">
+    <%= f.label :fornecedor_id %><br>
+    <%= f.select :fornecedor_id, options_from_collection_for_select(Fornecedor.all, 'id', 'nome') %>
+  </div>
+  <!-- <div class="field">
+    <%= f.label :quantidade_itens %><br>
+    <%= f.number_field :quantidade_itens %>
+  </div> -->
+  <div class="field">
+    <%= f.hidden_field :status_pedido, value: 'Em aberto' %>
+   
+    
+
+
+  </div>
+  <!-- <div class="field">
+    <%= f.label :valor_pedido %><br>
+    <%= f.text_field :valor_pedido %>
+  </div> -->
+  <!-- <div class="field">
+    <%= f.hidden_field :data_hora_envio %>
+  </div>
+  <div class="field">
+    <%= f.hidden_field :data_hora_recebimento %>
+  </div> -->
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

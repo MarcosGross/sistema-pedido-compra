@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  data_pedido: 2019-07-19
+  nome_fornecedor: MyString
+  quantidade_itens: 1
+  status_pedido: MyString
+  valor_pedido: 1.5
+  data_hora_envio: 2019-07-19
+  data_hora_recebimento: 2019-07-19
+
+two:
+  data_pedido: 2019-07-19
+  nome_fornecedor: MyString
+  quantidade_itens: 1
+  status_pedido: MyString
+  valor_pedido: 1.5
+  data_hora_envio: 2019-07-19
+  data_hora_recebimento: 2019-07-19

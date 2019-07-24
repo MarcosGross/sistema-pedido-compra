@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= content_for?(:title) ? yield(:title) : "Sistema Pedido de Compra" %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Learn Rails" %>">
+    <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <%= csrf_meta_tags %> 
+    
+
+  </head>
+     
+  <header>   
+    <div class="container-fluid">    
+    <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+
+    <% if admin_user_signed_in? %>
+    <br>
+    <br>
+    <li class="nav-link"><%= link_to 'Pedidos', root_path %></li>
+    <li class="nav-link"><%= link_to 'Produtos', produtos_path %></li>
+    <li class="nav-link"><%= link_to 'Fornecedores', fornecedores_path %></li>
+    <li class="nav-link">
+      <%= link_to destroy_user_session_path, :method => :delete do %>Sair<% end %>       
+  </li>
+<% end %>
+    
+   <!-- Fixed navbar -->
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="#">Sistema <small>Pedido de Compra</small></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+
+    <%= link_to "Home", root_path %>
+    <li class="nav-link"><%= link_to 'Pedidos', root_path %></li>
+    <li class="nav-link"><%= link_to 'Produtos', produtos_path %></li>
+    <li class="nav-link"><%= link_to 'Fornecedores', fornecedores_path %></li>
+    <li class="nav-link">
+    
+      <%= link_to destroy_user_session_path, :method => :delete do %>Sair<% end %>       
+    </li>
+      </ul>
+     
+    </div>
+  </nav>
+</header>
+
+<!-- Begin page content -->
+
+  
+    <%= yield %>    
+ 
+</main>
+
+
+<footer class="footer mt-auto py-3">
+  
+      <p class="mt-5 mb-3 text-muted">&copy; <small>Sistema 2019</small></p>
+  
+</footer>
+
+      </div>  
+    </div>  
+  </body>
+</html>

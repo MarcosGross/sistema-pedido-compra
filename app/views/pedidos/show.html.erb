@@ -1,0 +1,78 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Data pedido:</strong>
+  <%= @pedido.data_pedido %>
+</p>
+
+<p>
+  <strong>Nome fornecedor:</strong>
+  <%= @pedido.fornecedor.nome %>
+</p>
+
+<p>
+  <strong>Quantidade itens:</strong>
+  <%= @pedido.quantidade_itens %>
+</p>
+
+<p>
+  <strong>Status pedido:</strong>
+  <%= @pedido.status_pedido %>
+</p>
+
+<p>
+  <strong>Valor pedido:</strong>
+  <%= @pedido.valor_pedido %>
+</p>
+
+<p>
+  <strong>Data hora envio:</strong>
+  <%= @pedido.data_hora_envio %>
+</p>
+
+<p>
+  <strong>Data hora recebimento:</strong>
+  <%= @pedido.data_hora_recebimento %>
+</p>
+
+<%= link_to 'Adicionar Produto', new_pedido_produto_pedido_path(params[:id]) %> |
+<%= link_to 'Edit', edit_pedido_path(@pedido) %> |
+<%= link_to 'Back', pedidos_path %>
+<% if @pedido.status_pedido == 'Em aberto' %>
+    
+<%= link_to 'Fechar pedido', alterar_status_path(id: @pedido.id, status: "Fechado") %>
+ 
+ <% elsif @pedido.status_pedido == 'Fechado' %>
+ <%= link_to 'Reabrir pedido', controller:"pedidos", action:"alterar_status", status:"Em aberto", id:@pedido.id %>
+ <%= link_to 'Enviar pedido', controller:"pedidos", action:"alterar_status", status:"Enviado", id:@pedido.id %>
+ <% elsif @pedido.status_pedido == 'Enviado' %>
+
+ <%= link_to 'Receber pedido', controller:"pedidos", action:"alterar_status", status:"Recebido", id:@pedido.id %>
+
+   <% end %>
+
+<h1>Produtos Pedidos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Valor unitario</th>
+      <th>Quantidade</th>
+      <th>Valor total</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pedido.produto_pedido.each do |produto_pedido| %>
+      <tr>
+        <td><%= produto_pedido.nome %></td>
+        <td><%= produto_pedido.valor_unitario %></td>
+        <td><%= produto_pedido.quantidade %></td>
+        <td><%= produto_pedido.valor_total %></td>
+        <td><%= link_to 'Destroy', pedido_produto_pedido_path(@pedido.id, produto_pedido.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

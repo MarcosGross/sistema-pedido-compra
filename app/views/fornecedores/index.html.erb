@@ -1,0 +1,40 @@
+<%= search_form_for @q do |f| %>
+ 
+  <%= f.label :nome_fornecedor %>
+  <%= f.search_field :nome_cont, placeholder:" Digite aqui para pesquisar" %>
+
+  <%= f.submit %>
+<% end %>
+
+
+<p id="notice"><%= notice %></p>
+
+<h1><b>Listando Fornecedores</b></h1>
+
+<div class="table-responsive">
+<table class="table table-striped table-bordered">
+  <thead class="thead-dark">
+    <tr>
+      <th>Nome</th>
+      <th>Email</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  </div>
+
+  <tbody>
+    <% @fornecedores.each do |fornecedor| %>
+      <tr>
+        <td><%= fornecedor.nome %></td>
+        <td><%= fornecedor.email %></td>
+        <td><%= link_to 'Mostrar', fornecedor %></td>
+        <td><%= link_to 'Alterar', edit_fornecedor_path(fornecedor) %></td>
+        <td><%= link_to 'Excluir', fornecedor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Fornecedor', new_fornecedor_path %>
